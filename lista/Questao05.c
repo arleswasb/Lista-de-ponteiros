@@ -13,7 +13,7 @@ int main(){
     char *str = (void*)malloc(50*sizeof(char));
     strcpy(str, "Agostinho");
     funcao(&str);
-    puts(str);
+    puts(str+1);//temos que deslocar o ponteiro da posição inicial (0) para posição inicial (1) incrementando em um byte a direita.
     free(str);
     return 0;
 }
