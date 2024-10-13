@@ -7,7 +7,6 @@ código, explicando o que faz cada uma das linhas.
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <time.h>
 
 int compare(const void *a, const void *b) {// no head a função deve receber como parametro os dados fornecidos pela função qsort
     if (*(float*)a > *(float*)b) return 1; // a função compara valores em float se a for maior que b retorna 1
@@ -19,8 +18,6 @@ int compare(const void *a, const void *b) {// no head a função deve receber co
 int main() {
     int n;
     float *valores;
-    clock_t start, end;
-    double tempoDeCPU;
 
     // Lendo a quantidade de valores que serão lidos
     printf("Digite o numero de valores: ");
@@ -45,14 +42,10 @@ int main() {
     }
     printf("\n");
 
-    start = clock(); // Captura do tempo de clock 
 
     // Ordenando os valores usando com a função qsort e compare
     qsort (valores, n, sizeof(float), compare); //a função qsort recebe como parametro o vetor de valores desordenados, o tamanho do vetor de valores, o tamanho de espaço entre os enereços de memoria de cada posição (que depende do tipo)
-  
-    end = clock();// Captura do tempo de clock 
 
-    tempoDeCPU = ((double)(end - start))/CLOCKS_PER_SEC;
 
     // Exibindo os valores em ordem crescente
     printf("\nValores em ordem crescente:\n");
@@ -61,7 +54,6 @@ int main() {
     }
     printf("\n");
 
-    printf("Tempo de execucao: %e segundos\n", tempoDeCPU);
 
     // Liberando a memória alocada
     free(valores);

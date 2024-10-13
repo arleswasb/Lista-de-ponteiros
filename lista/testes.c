@@ -1,21 +1,32 @@
-#include <stdio.h>
-#include <time.h>
+int main(void) {
+  int **x;
+  int nl = 15, nc = 20, i, j;
+  // 1. alocar vetor de ponteiros auxiliar
+  x = malloc(nl * sizeof(int *));
+  if (x == NULL) {
+    exit(0);
+  }
+  // 2. alocar as linhas da matriz
+  for (i = 0; i < nl; i++) {
+    x[i] = malloc(nc * sizeof(int));
+  }
+  for (i = 0; i < nl; i++) {
+    for (j = 0; j < nc; j++) {
+      x[i][j] = rand() % 100;
+    }
+  }
 
-void funcaoParaMedir() {
-    for (int i = 0; i < 100000000; i++); // Simulação de carga de trabalho
-}
-
-int main() {
-    clock_t inicio, fim;
-    double tempoDecorrido;
-
-    inicio = clock();  // Captura o tempo inicial
-    funcaoParaMedir(); // Função a ser medida
-    fim = clock();     // Captura o tempo final
-
-    // Cálculo do tempo em segundos
-    tempoDecorrido = ((double) (fim - inicio)) / CLOCKS_PER_SEC;
-    printf("Tempo de execução: %f segundos\n", tempoDecorrido);
-
-    return 0;
+  for (i = 0; i < nl; i++) {
+    for (j = 0; j < nc; j++) {
+      printf("%2d ", x[i][j]);
+    }
+    printf("\n");
+  }
+  // 1. liberar as linhas alocadas
+  for (i = 0; i < nl; i++) {
+    free(x[i]);
+  }
+  // 2. liberar o vetor de ponteiros auxiliar
+  free(x);
+  x = NULL;
 }

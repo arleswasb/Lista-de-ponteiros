@@ -40,8 +40,6 @@ int OrdenaVetor(int *valores,int n,int *comparar(const void*,const void*)){
 int main() {
     int n,i;
     int *valores;
-    clock_t start, end;
-    double tempoDeCPU;
 
     // Lendo a quantidade de valores que serão lidos
     printf("Digite o numero de valores: ");
@@ -65,27 +63,18 @@ int main() {
         printf("%d ", valores[i]);
     }
     printf("\n");
-
-    
-    
-    start = clock(); // Captura do tempo de clock 
+ 
        
     // Ordenando os valores usando com a função criada
      OrdenaVetor(valores,n,compare);//a função OrdenaVetorrecebe como parametro o vetor de valores desordenados, o ponteiropara função que vai comparar os numeros 
 
-    end = clock();// Captura do tempo de clock 
 
-    tempoDeCPU = ((double)(end - start))/CLOCKS_PER_SEC;
-
-   
     // Exibindo os valores em ordem crescente
     printf("\nValores em ordem crescente:\n");
     for (int i = 0; i < n; i++) {
         printf("%d ", valores[i]);
     }
     printf("\n");
-
-    printf("Tempo de execucao: %e segundos\n", tempoDeCPU);
 
 
     // Liberando a memória alocada

@@ -16,3 +16,19 @@ int main(){
 }
 */
 
+//O erro do codigo é que os valores de x nome[20] não podem ser atribuidos na definição da struct
+// a correção pode ser feita realizando a atribuição na funçãao principal
+
+#include <stdio.h>
+struct teste{
+    int x;
+    char nome[20];
+};
+
+int main(){ 
+    struct teste *s;
+    s->x = 3;  // Inicializa os membros da struct
+    strcpy(s->nome, "jose");// Usa strcpy para copiar strings
+    printf("%d \n", s->x);
+    printf("%s", s->nome);
+}
