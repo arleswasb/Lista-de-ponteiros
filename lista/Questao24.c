@@ -12,6 +12,7 @@ multiplica_matrizes(A, B, C, 2, 3, 4);
 
 #include <stdio.h>
 #include <stdlib.h>
+
 //função para criar uma matriz nXm
 
 int** criarMatriz(int *linhas, int *colunas){
